@@ -7,7 +7,54 @@ A reproducible, Snakemake-based bioinformatics workflow that connects raw Next-G
 This repository contains two parallel workflows:
 1. **The Toy Pipeline (DNA Variants):** A lightweight, self-contained demonstration that simulates FASTQ files, maps reads (BWA), calls variants (BCFTools), and correlates the presence of mutations with survival.
 2. **The Real Pipeline (RNA-Seq Expression):** A production-ready pipeline that quantifies transcripts (Salmon) and correlates continuous Transcripts Per Million (TPM) values with survival, stratifying cohorts by median expression.
+```mermaid 
+graph TD
+    classDef input fill:#e0f2fe,stroke:#0284c7,stroke-width:2px;
+    classDef script fill:#fef08a,stroke:#ca8a04,stroke-width:2px;
+    classDef output fill:#dcfce3,stroke:#16a34a,stroke-width:2px;
+    classDef tool fill:#f3f4f6,stroke:#4b5563,stroke-width:2px;
 
+    %% Inputs
+    FQ(FASTQ Files):::input
+    REF(Reference Genome):::input
+    CLIN(Clinical Metadata):::input
+
+    %% Processing
+    IDX[bwa index]:::tool
+    BWA[bwa mem]:::tool
+    SORT[samtools sort & index]:::tool
+    BCF[bcftools call]:::tool
+
+    %% Python Scripts
+    EXTRACT[extract_features.py]:::script
+    SURVIVAL[survival_analysis.py]:::script
+
+    %% Outputs
+    BAM(BAM Files)
+    VCF(VCF Files)
+    MAT(genomic_matrix.csv):::output
+    COX(cox_ph_results.csv):::output
+    KM(km_plot.png):::output
+
+    %% Flow
+    REF --> IDX
+    IDX --> BWA
+    FQ --> BWA
+    BWA --> BAM
+    BAM --> SORT
+    SORT --> BCF
+    REF --> BCF
+    BCF --> VCF
+    
+    VCF --> EXTRACT
+    EXTRACT --> MAT
+    
+    MAT --> SURVIVAL
+    CLIN --> SURVIVAL
+    
+    SURVIVAL --> COX
+    SURVIVAL --> KM
+```
 ---
 
 ## Project Structure
@@ -129,6 +176,46 @@ echo "Done! Images saved as workflow_toy.png and workflow_rnaseq.png."
 
 ```
 
-```
+# The Real Pipeline (RNA-Seq Expression)
 
+```mermaid
+graph TD
+    classDef input fill:#e0f2fe,stroke:#0284c7,stroke-width:2px;
+    classDef script fill:#fef08a,stroke:#ca8a04,stroke-width:2px;
+    classDef output fill:#dcfce3,stroke:#16a34a,stroke-width:2px;
+    classDef tool fill:#f3f4f6,stroke:#4b5563,stroke-width:2px;
+
+    %% Inputs
+    FQ(FASTQ Files):::input
+    TRANS(Reference Transcriptome):::input
+    CLIN(Clinical Metadata):::input
+
+    %% Processing
+    IDX[salmon index]:::tool
+    QUANT[salmon quant]:::tool
+
+    %% Python Scripts
+    EXTRACT[extract_expression.py]:::script
+    SURVIVAL[survival_analysis.py]:::script
+
+    %% Outputs
+    SF(quant.sf)
+    MAT(expression_matrix.csv):::output
+    COX(cox_ph_results.csv):::output
+    KM(km_plot.png):::output
+
+    %% Flow
+    TRANS --> IDX
+    IDX --> QUANT
+    FQ --> QUANT
+    QUANT --> SF
+    
+    SF --> EXTRACT
+    EXTRACT --> MAT
+    
+    MAT --> SURVIVAL
+    CLIN --> SURVIVAL
+    
+    SURVIVAL --> COX
+    SURVIVAL --> KM
 ```
