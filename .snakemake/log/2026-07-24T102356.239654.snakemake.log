@@ -1,0 +1,10 @@
+Building DAG of jobs...
+WorkflowError:
+MissingInputException: Missing input files for rule index_ref:
+    output: data/ref.fasta.bwt
+    affected files:
+        data/ref.fasta
+MissingInputException: Missing input files for rule index_ref:
+    output: data/ref.fasta.bwt
+    affected files:
+        data/ref.fasta

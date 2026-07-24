@@ -1,0 +1,35 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+all                      1
+survival_analysis        1
+total                    2
+
+Select jobs to execute...
+
+[Fri Jul 24 10:30:05 2026]
+rule survival_analysis:
+    input: results/genomic_matrix.csv, data/clinical.csv
+    output: results/cox_ph_results.csv, results/km_plot.png
+    jobid: 1
+    reason: Missing output files: results/cox_ph_results.csv, results/km_plot.png
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:30:20 2026]
+Error in rule survival_analysis:
+    jobid: 1
+    input: results/genomic_matrix.csv, data/clinical.csv
+    output: results/cox_ph_results.csv, results/km_plot.png
+
+RuleException:
+CalledProcessError in file /Users/umeshrosyara/Documents/githubdir/genomicSurvialAnalysis/Snakefile, line 54:
+Command 'set -euo pipefail;  /opt/anaconda3/envs/rnaseq_toy/bin/python3.10 /Users/umeshrosyara/Documents/githubdir/genomicSurvialAnalysis/.snakemake/scripts/tmpta9mhatc.survival_analysis.py' returned non-zero exit status 1.
+  File "/Users/umeshrosyara/Documents/githubdir/genomicSurvialAnalysis/Snakefile", line 54, in __rule_survival_analysis
+  File "/opt/anaconda3/envs/rnaseq_toy/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2026-07-24T103004.964543.snakemake.log

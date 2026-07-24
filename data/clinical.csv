@@ -1,0 +1,7 @@
+sample,time,status,age
+patient_A,78,1,65
+patient_B,89,0,71
+patient_C,51,0,68
+patient_D,34,0,41
+patient_E,31,0,44
+patient_F,32,0,54

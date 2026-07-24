@@ -1,0 +1,37 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+all                      1
+survival_analysis        1
+total                    2
+
+Select jobs to execute...
+
+[Fri Jul 24 10:31:33 2026]
+rule survival_analysis:
+    input: results/genomic_matrix.csv, data/clinical.csv
+    output: results/cox_ph_results.csv, results/km_plot.png
+    jobid: 1
+    reason: Missing output files: results/cox_ph_results.csv, results/km_plot.png
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:31:35 2026]
+Finished job 1.
+1 of 2 steps (50%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:31:35 2026]
+localrule all:
+    input: results/cox_ph_results.csv, results/km_plot.png
+    jobid: 0
+    reason: Input files updated by another job: results/cox_ph_results.csv, results/km_plot.png
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:31:35 2026]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: .snakemake/log/2026-07-24T103133.120956.snakemake.log

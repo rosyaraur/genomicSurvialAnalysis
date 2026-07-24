@@ -1,0 +1,7 @@
+sample,has_mutation,total_variants
+patient_A,0,0
+patient_B,1,1
+patient_C,1,1
+patient_D,1,2
+patient_E,1,1
+patient_F,1,1

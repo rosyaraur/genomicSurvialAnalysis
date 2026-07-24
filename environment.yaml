@@ -1,0 +1,13 @@
+name: survival_ngs
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - snakemake-minimal
+  - bwa
+  - samtools
+  - bcftools
+  - python=3.10
+  - pandas
+  - lifelines
+  - matplotlib

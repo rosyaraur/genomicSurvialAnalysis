@@ -1,0 +1,22 @@
+# Updated RNA-Seq Snakefile snippet
+rule index_transcriptome:
+    input: "data/transcriptome.fasta"
+    output: directory("data/salmon_index")
+    shell: "salmon index -t {input} -i {output}"
+
+rule salmon_quant:
+    input:
+        idx="data/salmon_index",
+        fq="data/{sample}.fastq"  # Or _1.fastq / _2.fastq for paired-end
+    output:
+        quant="results/quant/{sample}/quant.sf"
+    params:
+        outdir="results/quant/{sample}"
+    shell: 
+        # -l A automatically infers library type
+        "salmon quant -i {input.idx} -l A -r {input.fq} -o {params.outdir}"
+
+rule extract_expression:
+    input: expand("results/quant/{sample}/quant.sf", sample=SAMPLES)
+    output: "results/expression_matrix.csv"
+    script: "scripts/extract_expression.py"

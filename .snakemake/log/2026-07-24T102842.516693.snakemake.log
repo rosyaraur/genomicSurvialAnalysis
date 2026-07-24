@@ -1,0 +1,403 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+all                      1
+bwa_mem                  6
+extract_features         1
+index_bam                6
+index_ref                1
+sort_bam                 6
+survival_analysis        1
+variant_calling          6
+total                   28
+
+Select jobs to execute...
+
+[Fri Jul 24 10:28:43 2026]
+rule index_ref:
+    input: data/ref.fasta
+    output: data/ref.fasta.bwt
+    jobid: 6
+    reason: Missing output files: data/ref.fasta.bwt
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:43 2026]
+Finished job 6.
+1 of 28 steps (4%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:44 2026]
+rule bwa_mem:
+    input: data/ref.fasta, data/ref.fasta.bwt, data/patient_A.fastq
+    output: mapped/patient_A.bam
+    jobid: 5
+    reason: Missing output files: mapped/patient_A.bam; Input files updated by another job: data/ref.fasta.bwt
+    wildcards: sample=patient_A
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:44 2026]
+Finished job 5.
+2 of 28 steps (7%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:44 2026]
+rule bwa_mem:
+    input: data/ref.fasta, data/ref.fasta.bwt, data/patient_C.fastq
+    output: mapped/patient_C.bam
+    jobid: 14
+    reason: Missing output files: mapped/patient_C.bam; Input files updated by another job: data/ref.fasta.bwt
+    wildcards: sample=patient_C
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:44 2026]
+Finished job 14.
+3 of 28 steps (11%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:44 2026]
+rule sort_bam:
+    input: mapped/patient_A.bam
+    output: mapped/patient_A.sorted.bam
+    jobid: 4
+    reason: Missing output files: mapped/patient_A.sorted.bam; Input files updated by another job: mapped/patient_A.bam
+    wildcards: sample=patient_A
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:44 2026]
+Finished job 4.
+4 of 28 steps (14%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:44 2026]
+rule index_bam:
+    input: mapped/patient_A.sorted.bam
+    output: mapped/patient_A.sorted.bam.bai
+    jobid: 7
+    reason: Missing output files: mapped/patient_A.sorted.bam.bai; Input files updated by another job: mapped/patient_A.sorted.bam
+    wildcards: sample=patient_A
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:44 2026]
+Finished job 7.
+5 of 28 steps (18%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:44 2026]
+rule bwa_mem:
+    input: data/ref.fasta, data/ref.fasta.bwt, data/patient_F.fastq
+    output: mapped/patient_F.bam
+    jobid: 26
+    reason: Missing output files: mapped/patient_F.bam; Input files updated by another job: data/ref.fasta.bwt
+    wildcards: sample=patient_F
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:44 2026]
+Finished job 26.
+6 of 28 steps (21%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:44 2026]
+rule sort_bam:
+    input: mapped/patient_C.bam
+    output: mapped/patient_C.sorted.bam
+    jobid: 13
+    reason: Missing output files: mapped/patient_C.sorted.bam; Input files updated by another job: mapped/patient_C.bam
+    wildcards: sample=patient_C
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:44 2026]
+Finished job 13.
+7 of 28 steps (25%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:44 2026]
+rule sort_bam:
+    input: mapped/patient_F.bam
+    output: mapped/patient_F.sorted.bam
+    jobid: 25
+    reason: Missing output files: mapped/patient_F.sorted.bam; Input files updated by another job: mapped/patient_F.bam
+    wildcards: sample=patient_F
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:45 2026]
+Finished job 25.
+8 of 28 steps (29%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:45 2026]
+rule bwa_mem:
+    input: data/ref.fasta, data/ref.fasta.bwt, data/patient_D.fastq
+    output: mapped/patient_D.bam
+    jobid: 18
+    reason: Missing output files: mapped/patient_D.bam; Input files updated by another job: data/ref.fasta.bwt
+    wildcards: sample=patient_D
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:45 2026]
+Finished job 18.
+9 of 28 steps (32%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:45 2026]
+rule sort_bam:
+    input: mapped/patient_D.bam
+    output: mapped/patient_D.sorted.bam
+    jobid: 17
+    reason: Missing output files: mapped/patient_D.sorted.bam; Input files updated by another job: mapped/patient_D.bam
+    wildcards: sample=patient_D
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:45 2026]
+Finished job 17.
+10 of 28 steps (36%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:45 2026]
+rule index_bam:
+    input: mapped/patient_D.sorted.bam
+    output: mapped/patient_D.sorted.bam.bai
+    jobid: 19
+    reason: Missing output files: mapped/patient_D.sorted.bam.bai; Input files updated by another job: mapped/patient_D.sorted.bam
+    wildcards: sample=patient_D
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:45 2026]
+Finished job 19.
+11 of 28 steps (39%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:45 2026]
+rule variant_calling:
+    input: data/ref.fasta, mapped/patient_D.sorted.bam, mapped/patient_D.sorted.bam.bai
+    output: vcf/patient_D.vcf
+    jobid: 16
+    reason: Missing output files: vcf/patient_D.vcf; Input files updated by another job: mapped/patient_D.sorted.bam, mapped/patient_D.sorted.bam.bai
+    wildcards: sample=patient_D
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:45 2026]
+Finished job 16.
+12 of 28 steps (43%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:45 2026]
+rule index_bam:
+    input: mapped/patient_C.sorted.bam
+    output: mapped/patient_C.sorted.bam.bai
+    jobid: 15
+    reason: Missing output files: mapped/patient_C.sorted.bam.bai; Input files updated by another job: mapped/patient_C.sorted.bam
+    wildcards: sample=patient_C
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:45 2026]
+Finished job 15.
+13 of 28 steps (46%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:45 2026]
+rule index_bam:
+    input: mapped/patient_F.sorted.bam
+    output: mapped/patient_F.sorted.bam.bai
+    jobid: 27
+    reason: Missing output files: mapped/patient_F.sorted.bam.bai; Input files updated by another job: mapped/patient_F.sorted.bam
+    wildcards: sample=patient_F
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:45 2026]
+Finished job 27.
+14 of 28 steps (50%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:45 2026]
+rule variant_calling:
+    input: data/ref.fasta, mapped/patient_A.sorted.bam, mapped/patient_A.sorted.bam.bai
+    output: vcf/patient_A.vcf
+    jobid: 3
+    reason: Missing output files: vcf/patient_A.vcf; Input files updated by another job: mapped/patient_A.sorted.bam.bai, mapped/patient_A.sorted.bam
+    wildcards: sample=patient_A
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:45 2026]
+Finished job 3.
+15 of 28 steps (54%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:45 2026]
+rule variant_calling:
+    input: data/ref.fasta, mapped/patient_C.sorted.bam, mapped/patient_C.sorted.bam.bai
+    output: vcf/patient_C.vcf
+    jobid: 12
+    reason: Missing output files: vcf/patient_C.vcf; Input files updated by another job: mapped/patient_C.sorted.bam.bai, mapped/patient_C.sorted.bam
+    wildcards: sample=patient_C
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:46 2026]
+Finished job 12.
+16 of 28 steps (57%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:46 2026]
+rule variant_calling:
+    input: data/ref.fasta, mapped/patient_F.sorted.bam, mapped/patient_F.sorted.bam.bai
+    output: vcf/patient_F.vcf
+    jobid: 24
+    reason: Missing output files: vcf/patient_F.vcf; Input files updated by another job: mapped/patient_F.sorted.bam, mapped/patient_F.sorted.bam.bai
+    wildcards: sample=patient_F
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:46 2026]
+Finished job 24.
+17 of 28 steps (61%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:46 2026]
+rule bwa_mem:
+    input: data/ref.fasta, data/ref.fasta.bwt, data/patient_E.fastq
+    output: mapped/patient_E.bam
+    jobid: 22
+    reason: Missing output files: mapped/patient_E.bam; Input files updated by another job: data/ref.fasta.bwt
+    wildcards: sample=patient_E
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:46 2026]
+Finished job 22.
+18 of 28 steps (64%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:46 2026]
+rule sort_bam:
+    input: mapped/patient_E.bam
+    output: mapped/patient_E.sorted.bam
+    jobid: 21
+    reason: Missing output files: mapped/patient_E.sorted.bam; Input files updated by another job: mapped/patient_E.bam
+    wildcards: sample=patient_E
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:46 2026]
+Finished job 21.
+19 of 28 steps (68%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:46 2026]
+rule bwa_mem:
+    input: data/ref.fasta, data/ref.fasta.bwt, data/patient_B.fastq
+    output: mapped/patient_B.bam
+    jobid: 10
+    reason: Missing output files: mapped/patient_B.bam; Input files updated by another job: data/ref.fasta.bwt
+    wildcards: sample=patient_B
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:46 2026]
+Finished job 10.
+20 of 28 steps (71%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:46 2026]
+rule index_bam:
+    input: mapped/patient_E.sorted.bam
+    output: mapped/patient_E.sorted.bam.bai
+    jobid: 23
+    reason: Missing output files: mapped/patient_E.sorted.bam.bai; Input files updated by another job: mapped/patient_E.sorted.bam
+    wildcards: sample=patient_E
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:46 2026]
+Finished job 23.
+21 of 28 steps (75%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:46 2026]
+rule variant_calling:
+    input: data/ref.fasta, mapped/patient_E.sorted.bam, mapped/patient_E.sorted.bam.bai
+    output: vcf/patient_E.vcf
+    jobid: 20
+    reason: Missing output files: vcf/patient_E.vcf; Input files updated by another job: mapped/patient_E.sorted.bam.bai, mapped/patient_E.sorted.bam
+    wildcards: sample=patient_E
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:46 2026]
+Finished job 20.
+22 of 28 steps (79%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:46 2026]
+rule sort_bam:
+    input: mapped/patient_B.bam
+    output: mapped/patient_B.sorted.bam
+    jobid: 9
+    reason: Missing output files: mapped/patient_B.sorted.bam; Input files updated by another job: mapped/patient_B.bam
+    wildcards: sample=patient_B
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:46 2026]
+Finished job 9.
+23 of 28 steps (82%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:46 2026]
+rule index_bam:
+    input: mapped/patient_B.sorted.bam
+    output: mapped/patient_B.sorted.bam.bai
+    jobid: 11
+    reason: Missing output files: mapped/patient_B.sorted.bam.bai; Input files updated by another job: mapped/patient_B.sorted.bam
+    wildcards: sample=patient_B
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:46 2026]
+Finished job 11.
+24 of 28 steps (86%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:46 2026]
+rule variant_calling:
+    input: data/ref.fasta, mapped/patient_B.sorted.bam, mapped/patient_B.sorted.bam.bai
+    output: vcf/patient_B.vcf
+    jobid: 8
+    reason: Missing output files: vcf/patient_B.vcf; Input files updated by another job: mapped/patient_B.sorted.bam.bai, mapped/patient_B.sorted.bam
+    wildcards: sample=patient_B
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:46 2026]
+Finished job 8.
+25 of 28 steps (89%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:46 2026]
+rule extract_features:
+    input: vcf/patient_A.vcf, vcf/patient_B.vcf, vcf/patient_C.vcf, vcf/patient_D.vcf, vcf/patient_E.vcf, vcf/patient_F.vcf
+    output: results/genomic_matrix.csv
+    jobid: 2
+    reason: Missing output files: results/genomic_matrix.csv; Input files updated by another job: vcf/patient_F.vcf, vcf/patient_C.vcf, vcf/patient_B.vcf, vcf/patient_A.vcf, vcf/patient_D.vcf, vcf/patient_E.vcf
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:46 2026]
+Finished job 2.
+26 of 28 steps (93%) done
+Select jobs to execute...
+
+[Fri Jul 24 10:28:46 2026]
+rule survival_analysis:
+    input: results/genomic_matrix.csv, data/clinical.csv
+    output: results/cox_ph_results.csv, results/km_plot.png
+    jobid: 1
+    reason: Missing output files: results/cox_ph_results.csv, results/km_plot.png; Input files updated by another job: results/genomic_matrix.csv
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:28:47 2026]
+Error in rule survival_analysis:
+    jobid: 1
+    input: results/genomic_matrix.csv, data/clinical.csv
+    output: results/cox_ph_results.csv, results/km_plot.png
+
+RuleException:
+CalledProcessError in file /Users/umeshrosyara/Documents/githubdir/genomicSurvialAnalysis/Snakefile, line 54:
+Command 'set -euo pipefail;  /opt/anaconda3/envs/rnaseq_toy/bin/python3.10 /Users/umeshrosyara/Documents/githubdir/genomicSurvialAnalysis/.snakemake/scripts/tmpw273ws5u.survival_analysis.py' returned non-zero exit status 1.
+  File "/Users/umeshrosyara/Documents/githubdir/genomicSurvialAnalysis/Snakefile", line 54, in __rule_survival_analysis
+  File "/opt/anaconda3/envs/rnaseq_toy/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2026-07-24T102842.516693.snakemake.log

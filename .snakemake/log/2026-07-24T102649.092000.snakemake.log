@@ -1,0 +1,39 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                  count
+-----------------  -------
+all                      1
+bwa_mem                  6
+extract_features         1
+index_bam                6
+index_ref                1
+sort_bam                 6
+survival_analysis        1
+variant_calling          6
+total                   28
+
+Select jobs to execute...
+
+[Fri Jul 24 10:26:49 2026]
+rule index_ref:
+    input: data/ref.fasta
+    output: data/ref.fasta.bwt
+    jobid: 4
+    reason: Missing output files: data/ref.fasta.bwt
+    resources: tmpdir=/var/folders/n9/m21jsbpx6_n4fnbmj_nd_yw80000gn/T
+
+[Fri Jul 24 10:26:49 2026]
+Error in rule index_ref:
+    jobid: 4
+    input: data/ref.fasta
+    output: data/ref.fasta.bwt
+    shell:
+        bwa index data/ref.fasta
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2026-07-24T102649.092000.snakemake.log
